@@ -7,15 +7,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import android.app.Notification;
+import android.app.PendingIntent;
+
 import com.sbar.volumewaker.BootService;
 
 public class SettingsActivity extends Activity {
-    private final String LOGTAG = "volumewaker SettingsActivity";
+    private final String LOGTAG = "SettingsActivity";
 
-    private boolean isServiceRunning() {
+    public static boolean isServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(
             Context.ACTIVITY_SERVICE
         );
+
         for (ActivityManager.RunningServiceInfo service :
              manager.getRunningServices(Integer.MAX_VALUE)) {
             if (BootService.class.getName().equals(
@@ -35,6 +39,7 @@ public class SettingsActivity extends Activity {
             Intent serviceIntent = new Intent(this, BootService.class);
             startService(serviceIntent);
         }
-        Log.i(LOGTAG, LOGTAG+" onCreate");
+
+        Log.i(LOGTAG, "onCreate");
     }
 }
