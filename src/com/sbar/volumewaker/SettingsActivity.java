@@ -31,8 +31,7 @@ public class SettingsActivity extends Activity {
         super.onCreate(s);
         setContentView(R.layout.main);
 
-        if (!isServiceRunning())
-        {
+        if (!isServiceRunning()) {
             Intent serviceIntent = new Intent(this, BootService.class);
             startService(serviceIntent);
         }
