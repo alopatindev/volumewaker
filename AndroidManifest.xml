@@ -28,7 +28,7 @@
                  android:icon="@drawable/ic_launcher"
                  android:label="VolumeWaker Service">
             <intent-filter>
-                <action android:name="com.sbar.volumewaker.BootService" />
+                <action android:name=".BootService" />
             </intent-filter>
         </service>
     </application>
