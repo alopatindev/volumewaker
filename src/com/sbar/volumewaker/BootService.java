@@ -10,18 +10,26 @@ public class BootService extends Service {
 
     @Override
     public IBinder onBind(final Intent intent) {
+        Log.i(LOGTAG, LOGTAG+" onBind");
         return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        //TODO do something useful
+        Log.i(LOGTAG, LOGTAG+" onStartCommand");
+        return Service.START_NOT_STICKY;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(LOGTAG, "created");
+        Log.i(LOGTAG, LOGTAG+" created");
     }
 
     @Override
     public void onStart(final Intent intent, final int startId) {
         super.onStart(intent, startId);
-        Log.i(LOGTAG, "started");
+        Log.i(LOGTAG, LOGTAG+" started");
     }
 }
