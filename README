@@ -1,0 +1,5 @@
+A little hack for iOcean X7 and it's crappy power button.
+This hack fixes physical power issue by processing volume buttons for
+waking/sleeping device.
+To wake device you should just press any of volume buttons, to make it sleep—
+press both volume buttons.
