@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <unistd.h>
 
 #define BUF_MAX 256
 #define VOLUME_UP 24
@@ -74,7 +75,7 @@ void parse_line(char* buffer, size_t len)
     }
 }
 
-int main(int argc, const char *argv[])
+int child_process()
 {
     system("logcat -c");
     f = popen("logcat *:d", "r");
@@ -97,4 +98,21 @@ int main(int argc, const char *argv[])
     
     quit_handler(0);
     return 0;
+}
+
+int main(int argc, const char *argv[])
+{
+    pid_t pid = fork();
+    if (pid >= 0)
+    {
+        printf("forking ok\n");
+        if (pid == 0)
+        {
+            printf("running child process\n");
+            return child_process();
+        }
+    } else {
+        printf("forking failed\n");
+    }
+    return 1;
 }
