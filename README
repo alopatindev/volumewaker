@@ -1,7 +1,20 @@
 A little hack for iOcean X7 and it's crappy power button.
-This hack fixes physical power issue by processing volume buttons for
+This hack fixes physical power button issue by processing volume buttons for
 waking/sleeping device.
 To wake device you should just press any of volume buttons, to make it sleep—
 press both volume buttons.
 
 License for this software is WTFPL. See COPYING for details.
+
+Building and installation:
+0. You need a Linux-based distro, Android NDK and Apache Ant to be installed
+1. Connect your phone via USB, enable USB debugging
+2. Run ./build.sh && ./install.sh
+3. Now you've got a file /system/bin/volumewaker on your phone.
+   You can now add a text file, say /etc/init.d/99local with text
+
+#!/system/bin/sh
+/system/bin/volumewaker
+
+and let it be executable by chmod 777 /etc/init.d/99local
+4. Reboot your phone and enjoy
